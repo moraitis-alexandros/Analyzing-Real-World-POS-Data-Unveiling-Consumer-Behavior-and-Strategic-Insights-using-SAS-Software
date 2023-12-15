@@ -1,6 +1,6 @@
 # Analyzing Real-World POS Data: Unveiling Consumer Behavior & Strategic Insights using SAS Software
 
-The present work presents a comprehensive analysis of real sales data from company XYZ, using exploratory analysis as well as machine learning techniques such as RFM analysis (clustering), market basket analysis, and conducting predictions using a decision tree. The study leverages the capabilities of SAS Viya and SAS EG tools to extract valuable insights from the data and discover patterns and trends that can influence strategic decision-making.
+The present work presents a comprehensive analysis of real sales data from company XYZ, using exploratory analysis as well as machine learning techniques such as RFM analysis (clustering), market basket analysis, and conducting predictions using a decision tree. The study leverages the capabilities of **SAS Viya & SAS EG** tools to extract valuable insights from the data and discover patterns and trends that can influence strategic decision-making.
 
 
 [**Exploratory Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Exploratory-Analysis)
@@ -15,7 +15,7 @@ The enhanced RFM analysis integrated age-based clusters, refining segmentation f
 
 Identified pivotal products influencing sales, such as Hailstorm Steel Woods Set, Course Pro Umbrella, and Husky Rope 60, which collectively contributed to a substantial portion of total sales.
 
-[Decision Tree Analysis](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Decision-Tree-Analysis)
+[**Decision Tree Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Decision-Tree-Analysis)
 
 Predicted customer category 97 purchases to strategically allocate discount coupons, significantly enhancing buyer predictions by 2,9758 times compared to a basic model.
 
