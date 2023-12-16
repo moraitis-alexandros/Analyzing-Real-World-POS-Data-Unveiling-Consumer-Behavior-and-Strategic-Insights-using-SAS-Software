@@ -217,13 +217,16 @@ Comparing skewness between filtered and unfiltered datasets highlights the effec
 
 ## Creating a pipeline is SAS Visual Studio for Effective Clustering
 
+The clustering process is modeled through the pipeline below using SAS Visual Studio
+
+![Pipeline](images/pipeline.png)
+
 The text discusses data filtering using metadata limits for "Frequency" and "Monetary" properties, alongside extreme percentiles for "Recency." The Recency property does not follow a normal distribution, as a result we cannot use standard deviations from the mean to handle outliers.
 
 Additionally, a Log Transformation Method is applied in the pipeline due to the data's persistent skewness even after outlier limitation. Skewed data can negatively impact algorithms like k-means. Hence, a log transformation is performed, significantly reducing skewness.
 
 For the Clustering Node Settings, the aim is to determine optimal features. The analysis requires at least four clusters based on RFM theory. The Aligned Box Criterion is used to select the number of clusters with the highest GAP statistic. Various normalization methods like z-score, range, and alignment methods such as Principal Component Analysis (PCA) were experimented with. PCA, despite reducing dimensionality, surprisingly improved the GAP statistic even in a few dimensions (three in this case) compared to no PCA.
 
-## Optimizing Clustering Parameters for RFM Analysis
 
 ## Clustering Parameter Selection for RFM Analysis
 
@@ -238,7 +241,6 @@ For the Clustering Node Settings, the aim is to determine optimal features. The 
 | 7      | Range                  | Manhattan           | Yes         | 0.67        | 3        |
 | 8      | Range                  | Manhattan           | No          | 0.48        | 3        |
 
-### Summary
 The optimal choice, meeting the criterion of at least four clusters for RFM analysis and displaying a higher GAP statistic, is Choice 1. This selection not only fulfills the minimum cluster criterion but also yields a higher GAP value compared to Choice 6 (GAP: 0.39).
 
 ### Chosen Parameters for Clustering
