@@ -13,19 +13,11 @@ The enriched RFM analysis, segmented customers into four categories - Best (48.6
 
 [**Market Basket Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Market-Basket-Analysis)
 
-Identified pivotal products influencing sales, such as Hailstorm Steel Woods Set, Course Pro Umbrella, and Husky Rope 60, which collectively contributed to a substantial portion of total sales.
+Identified pivotal products influencing sales, which collectively contributed to a substantial portion of total sales.
 
 [**Decision Tree Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Decision-Tree-Analysis)
 
 Predicted customer category 97 purchases to strategically allocate discount coupons, significantly enhancing buyer predictions by 2,9758 times compared to a basic model.
-
-*The project was part of my final SAS Joint Certificate Report*
-
-## References
-
-
-
-
 
 # Exploratory Data Analysis Insights:
 
@@ -428,8 +420,8 @@ In consideration of the analysis:
 ![Cumulative Response graph](images/crg.png)
 
 
-- For the 15% (as specified and with a direct line up to 20%):
-  - Optimal decision tree: cumulative response rate = 87
+- For the 15%:
+Selecting the top 15% of customers (sorted and more likely to be buyers according to the optimal decision tree model), 87.879% of these customers will be buyers (purchasing category 97).
 
 
 
@@ -484,6 +476,33 @@ Uploading the newcustomers table and running a profiling through the manage data
 I noticed there are no null values, so I proceeded to create the node score_Data. Utilizing the results obtained, I used the explore and visualize tool, resulting in the following bar chart:
 
 The model predicted that out of 200 clients (pertaining to the new customers file), 155 will be buyers (78% buyers). Conversely, 45 will be Non-Buyers (22% Non-Buyers). Observing the dataset, the minimum probability found is 4.83%, and the maximum is 92.77%. However, these values refer to the entire dataset (buyers & non-buyers).
+
+# Project Synopsis
+
+The comprehensive analysis of XYZ Company's real sales data, facilitated by SAS Viya & SAS EG tools, provided crucial insights crucial for strategic decision-making. This study, employing exploratory methods and machine learning techniques such as RFM analysis, market basket analysis, and decision tree predictions, unraveled intricate sales dynamics, product inefficiencies impacting revenue, customer segmentation, and influential products driving sales.
+
+In the Exploratory Analysis, the deep dive into sales dynamics and consumer behavior revealed nuanced insights into market share, product performance, and regional revenue distribution. This led to the creation of impactful metrics like the Loss Rate, enabling strategic optimizations.
+
+The RFM Analysis segmented customers and identified high-value segments, offering actionable strategies for targeted customer retention and enhancement initiatives, enhancing XYZ Company's market positioning.
+
+The Market Basket Analysis highlighted pivotal products influencing sales, enabling effective product bundling strategies for increased revenue.
+
+The Decision Tree Analysis allowed predictive modeling for the strategic allocation of discount coupons, significantly improving buyer predictions and elevating decision-making accuracy by 2,9758 times compared to baseline models.
+
+*The project was part of my final SAS Joint Certificate Report*
+
+# References
+- **["Implementing SAS Viya: An End-to-End Guide"](https://www.amazon.com/Implementing-SAS-Viya-End-End/dp/1635269042)**  
+  Authors: Christopher J. Bost, Tapan M. Patel, Manav Gupta, Radhikha Myneni
+- **[Clustering in SAS Documentation](https://documentation.sas.com/doc/en/vdmmlcdc/8.1/casfedsql/n15zqld58pd186n1djkzia6oprza.htm)**  
+- **[Decision Trees in SAS Documentation](https://documentation.sas.com/doc/en/vdmmlcdc/8.1/casfedsql/n15zqld58pd186n1djkzia6oprza.htm)**
+- [SAS Documentation: Cumulative Response Rate](https://documentation.sas.com/doc/en/vdmmlcdc/8.1/casfedsql/n15zqld58pd186n1djkzia6oprza.htm)
+- [Indiana University Knowledge Base: Logistic Regression](https://kb.iu.edu/d/aczw)
+- [Kaggle Dataset: Brazilian States](https://www.kaggle.com/datasets/thiagobodruk/brazilianstates)
+- [Listendata: SAS Substr Function](https://www.listendata.com/2023/06/sas-substr-function.html)
+- [Statology: Skewness and Kurtosis in SAS](https://www.statology.org/skewness-kurtosis-in-sas/)
+- [GoodData Community: Normality Testing - Skewness and Kurtosis](https://community.gooddata.com/metrics-and-maql-kb-articles-43/normality-testing-skewness-and-kurtosis-241)
+- [Statology: Log Transformation in SAS](https://www.statology.org/log-transformation-in-sas/)
 
 
 
