@@ -1,6 +1,6 @@
 # Analyzing Real-World POS Data: Unveiling Consumer Behavior & Strategic Insights using SAS Software
 
-The present work presents a comprehensive analysis of real sales data from company XYZ, using exploratory analysis as well as machine learning techniques such as RFM analysis (clustering), market basket analysis, and conducting predictions using a decision tree. The study leverages the capabilities of **SAS Viya & SAS EG** tools to extract valuable insights from the data and discover patterns and trends that can influence strategic decision-making.
+The present work entails a comprehensive analysis of real sales data from XYZ Company, specializing in retail products related to hobbies like camping, golf, and more. This analysis employs exploratory methods alongside machine learning techniques, including RFM analysis (clustering), market basket analysis, and prediction using decision trees. Leveraging the capabilities of SAS Viya & SAS EG tools, this study extracts valuable insights from the data, uncovering patterns and trends critical for informed strategic decision-making.
 
 
 [**Exploratory Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Exploratory-Analysis)
@@ -31,7 +31,7 @@ Predicted customer category 97 purchases to strategically allocate discount coup
 
 ## Objective: 
 
-The primary aim was to conduct an in-depth exploratory data analysis (EDA) to decipher supplier demand, revenue trends, and factors influencing consumer preferences in product selection. The characteristics of the customer base were identified through exploratory analysis and various visualization methods. The breakdown showed a gender distribution of 70.07% male and 29.93% female. Key age groups were middle-aged individuals (36-50) at 37.09% and the young (26-35) at 30.21%. The primary regions of origin were RJ, MG, PR, RS. It was noted that returns amounted to $3,178,087.90 (15.95%) against sales of $16,752,418.20 (84.05%). The average basket size was determined at $959.58, with an average of 14 products per basket. Significantly popular products included the Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, accounting for a quarter (25%-26%) of sales, as well as the Husky Rope 60 and Blue Steel Max Putter, occupying 34% within their category. Notably, watches and eyewear categories had top products with smaller individual shares (8% and 6%, respectively), yet these categories collectively represented a substantial portion of total sales (9% and 11%, respectively). Supplier analysis revealed Dragon SA (22.40%) and Toktai & Chen (16.54%) as the most in-demand, with products from India and the US leading in revenue.
+The primary aim was to conduct an in-depth exploratory data analysis (EDA) to to uncover supplier demand, revenue trends, and factors driving consumer preferences. It encompassed customer demographics, regional insights, sales and return patterns, top products, promotional effectiveness, supplier analysis, and regional loss rates. Additionally, it delved into product origin preferences across different countries. Operational suggestions were proposed to optimize returns management, refine promotion strategies, enhance supplier relations, address regional challenges, and diversify product appeal.
 
 ## Tools Used
 
@@ -175,18 +175,15 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 ### Operational Suggestions:
 
-#### Operational Recommendations:
+**Optimize Returns Management:** Develop strategies to reduce return rates by analyzing reasons behind returns, especially focusing on investigating delayed deliveries and high-value product returns to improve customer satisfaction.
 
-- **Targeted Campaigns**: Suggested focused email marketing campaigns on Mondays and especially Saturdays, capitalizing on consumer interest and high-value products.
+**Refine Product Promotion Strategies:** Tailor promotional campaigns to target specific audiences effectively, ensuring that marketing efforts reach the right people at the right time, possibly through advanced customer segmentation techniques.
 
-- **Increased Sales Strategy**: Proposed efforts to boost sales on these specific days through targeting
+**Enhance Supplier Relations:** Collaborate with suppliers to improve product quality and packaging based on customer preferences, especially for suppliers with lower sales despite higher product values.
 
-- **Minimize Turkish Offerings:** Consider reducing Turkish products due to potential consumer mismatch.
-  
-- **Highlight Indian Selections:** Focus on Indian products for customers seeking multiple reasonably priced items, especially during promotions.
+**Address Regional Challenges:** Focus on regions exhibiting high Loss Rates by investigating delivery delays, customer satisfaction, and product satisfaction issues, aiming to reduce returns and enhance operational efficiency.
 
-- **Promote US Merchandise:** Emphasize US products for consumers valuing quality at a reasonable price. This aligns with discerning the best customer segments through subsequent RFM analysis.
-
+**Diversify Product Appeal:** Explore opportunities to improve the appeal of products from regions like Turkey by understanding consumer preferences, pricing strategies, and potentially leveraging successful models from high-performing regions like India and the US.
 
 
 
