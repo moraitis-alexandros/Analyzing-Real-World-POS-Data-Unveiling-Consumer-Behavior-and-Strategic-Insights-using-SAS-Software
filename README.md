@@ -416,35 +416,22 @@ Additional Note: Considering the operational cut-off point (0.166), the model ca
 
 The significant variables distinguishing between categories are age, total monetary value, and recency. These factors help comprehend a customer's behavior concerning the purchase of category 97. Age reflects consumer preferences, indicating potential attraction towards category 97 for a younger audience. Total monetary value reflects economic capacity, while recency mirrors customer dedication to the business. Leveraging this information, strategies can be adapted to target customers meeting specific criteria, increasing profits from potential purchases, while mitigating losses from wrongly targeted customers.
 
-**xi. Cumulative Response Graph**
 
-The Response Rate generally emerges as follows: If I take all the clients from the validation set and arrange their probabilities in descending order, the response rate is determined by the formula:
+## Analysis of Model Performance Metrics
 
-\[ \text{Response rate} = \frac{\text{TP}}{\text{Total number of predicted positive}} = \frac{\text{TP}}{\text{TP + FP}} \]
+**Cumulative Respose Graph**
 
-The y-axis shows the cumulative response rate, while the x-axis represents the percentages of the best (sorted in descending order) potential clients (those the model predicts as buyers).
+The Response Rate is determined by arranging all customers from the validation set based on their probabilities of being buyers, establishing the response rate via the formula: Response_rate = TP / Total Number of Predicted Positives = TP / (TP + FP). The cumulative response rate is displayed on the y-axis, while the x-axis signifies the percentages of top customers sorted by their buyer probabilities according to the model.
 
-Given the analysis based on the graph values and the operational translation of the result, I have:
+In consideration of the analysis:
 
-For the 15% (required according to the specification and considering a range up to 20%):
+![Cumulative Response graph](images/crg.png)
 
-In the optimal decision tree: cumulative response rate = 87.879%
-If I take the top 15% of clients (sorted with the highest probability of being buyers according to the optimal decision tree model), 87.879% of this 15% will be buyers (they will buy category 97).
 
-**xi. Cumulative Response Graph**
+- For the 15% (as specified and with a direct line up to 20%):
+  - Optimal decision tree: cumulative response rate = 87
 
-The Response Rate generally emerges as follows: If I take all the clients from the validation set and arrange their probabilities in descending order, the response rate is determined by the formula:
 
-\[ \text{Response rate} = \frac{\text{TP}}{\text{Total number of predicted positive}} = \frac{\text{TP}}{\text{TP + FP}} \]
-
-The y-axis shows the cumulative response rate, while the x-axis represents the percentages of the best (sorted in descending order) potential clients (those the model predicts as buyers).
-
-Given the analysis based on the graph values and the operational translation of the result, I have:
-
-For the 15% (required according to the specification and considering a range up to 20%):
-
-In the optimal decision tree: cumulative response rate = 87.879%
-If I take the top 15% of clients (sorted with the highest probability of being buyers according to the optimal decision tree model), 87.879% of this 15% will be buyers (they will buy category 97).
 
 **Response Graph**
 
@@ -452,7 +439,9 @@ Building on the preceding analysis of the % cumulative response graph, we can pr
 
 Taking all this into account, I interpret the result as follows:
 
-For the 15% (as requested and within the range of 15%-20%):
+![Response graph](images/rg.png)
+
+For the 15%:
 
 In the optimal decision tree, the response rate is 87.879%.
 If I take the 4th bucket (15%-20%) of the top clients (sorted with a higher probability of being buyers according to the optimal decision tree model), 87.879% of clients in this bucket will be buyers (purchasing category 97).
@@ -468,18 +457,20 @@ From the above, we observe:
 
 Considering all the above, I interpret the result as follows:
 
-For the 20% (as requested):
+![Cumulative Lift graph](images/clg.png)
+
+For the 20%:
 
 In the optimal decision tree, the cumulative lift = 2.9758%.
 If I take the top 15% of clients (sorted with a higher probability of being buyers according to the optimal decision tree model), there will be 2.9758 times more buyers found among these clients than if I followed the same process without a model (naïve model-random).
 
 **Cumulative % Captured Response Graph**
 
-The cumulative % captured response graph pertains to the validation set. The data is still sorted in descending order of probability (to be a buyer=1) and is cumulative. Essentially, the graph presents the percentage of sorted claims in the validation set (x-axis), representing the percentage of clients the model correctly identifies as buyers compared to the total clients identified as buyers in the validation set (always referring to the respective cumulative percentage).
+The cumulative % captured response graph pertains to the validation set. The data is still sorted in descending order of probability (to be a buyer=1) and is cumulative. Essentially, the graph presents the percentage of sorted claims in the validation set (x-axis), representing the percentage of clients the model correctly identifies as buyers compared to the total clients identified as buyers in the validation set (always referring to the respective cumulative percentage). More specifically, considering all the above, I can express the cumulative % captured response rate as follows:
 
-More specifically, considering all the above, I can express the cumulative % captured response rate as follows:
+![Cumulative Captured Response graph](images/ccrg.png)
 
-For the 25% (as required):
+For the 25%:
 
 In the optimal decision tree, the cumulative % captured response rate = 59.516%.
 If I take the top 20% of clients (sorted with a higher probability of being buyers according to the optimal decision tree model), 59.516% of the clients identified as buyers will be found among the entire validation dataset.
@@ -488,13 +479,11 @@ If I take the top 20% of clients (sorted with a higher probability of being buye
 
 Uploading the newcustomers table and running a profiling through the manage data feature yielded the following results:
 
+![Scoring](images/score.png)
+
 I noticed there are no null values, so I proceeded to create the node score_Data. Utilizing the results obtained, I used the explore and visualize tool, resulting in the following bar chart:
 
-The model predicted that out of 200 clients (pertaining to the new customers file), 155 will be buyers (78% buyers). Conversely, 45 will be Non-Buyers (22% Non-Buyers).
-
-Subsequently, I created a bar chart with the Probability_for_class_97=1 variable (categorized):
-
-Observing the dataset, the minimum probability found is 4.83%, and the maximum is 92.77%. However, these values refer to the entire dataset (buyers & non-buyers). If I create a filter only for the buyers (Predicted_for_class97 = 1), accounting for the operational cutoff point
+The model predicted that out of 200 clients (pertaining to the new customers file), 155 will be buyers (78% buyers). Conversely, 45 will be Non-Buyers (22% Non-Buyers). Observing the dataset, the minimum probability found is 4.83%, and the maximum is 92.77%. However, these values refer to the entire dataset (buyers & non-buyers).
 
 
 
