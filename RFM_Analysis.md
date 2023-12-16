@@ -1,4 +1,4 @@
-# RFM Analysis Insight:
+# RFM Analysis Insights:
 
 ## Objective: 
 
