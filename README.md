@@ -168,15 +168,15 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 ### Operational Suggestions:
 
-**Optimize Returns Management:** Develop strategies to reduce return rates by analyzing reasons behind returns, especially focusing on investigating delayed deliveries and high-value product returns to improve customer satisfaction.
+**📍 Optimize Returns Management:** Develop strategies to reduce return rates by analyzing reasons behind returns, especially focusing on investigating delayed deliveries and high-value product returns to improve customer satisfaction.
 
-**Refine Product Promotion Strategies:** Tailor promotional campaigns to target specific audiences effectively, ensuring that marketing efforts reach the right people at the right time, possibly through advanced customer segmentation techniques.
+**📍 Refine Product Promotion Strategies:** Tailor promotional campaigns to target specific audiences effectively, ensuring that marketing efforts reach the right people at the right time, possibly through advanced customer segmentation techniques.
 
-**Enhance Supplier Relations:** Collaborate with suppliers to improve product quality and packaging based on customer preferences, especially for suppliers with lower sales despite higher product values.
+**📍 Enhance Supplier Relations:** Collaborate with suppliers to improve product quality and packaging based on customer preferences, especially for suppliers with lower sales despite higher product values.
 
-**Address Regional Challenges:** Focus on regions exhibiting high Loss Rates by investigating delivery delays, customer satisfaction, and product satisfaction issues, aiming to reduce returns and enhance operational efficiency.
+**📍 Address Regional Challenges:** Focus on regions exhibiting high Loss Rates by investigating delivery delays, customer satisfaction, and product satisfaction issues, aiming to reduce returns and enhance operational efficiency.
 
-**Diversify Product Appeal:** Explore opportunities to improve the appeal of products from regions like Turkey by understanding consumer preferences, pricing strategies, and potentially leveraging successful models from high-performing regions like India and the US.
+**📍 Diversify Product Appeal:** Explore opportunities to improve the appeal of products from regions like Turkey by understanding consumer preferences, pricing strategies, and potentially leveraging successful models from high-performing regions like India and the US.
 
 
 # RFM Analysis Insight:
@@ -327,17 +327,17 @@ The results from the above three metrics are shown in the vizualization below
 
 ## 6 Proposed Strategies for Improvement
 
-- **📍Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
+- **📍 Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
   
-- **📍Clear Return Policy:** Establishment of transparent return policies to ensure customer satisfaction.
+- **📍 Clear Return Policy:** Establishment of transparent return policies to ensure customer satisfaction.
   
-- **📍Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
+- **📍 Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
   
-- **📍Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
+- **📍 Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
 
-- **📍Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
+- **📍 Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
   
-- **📍Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
+- **📍 Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
 
 
 # Market Basket Analysis
