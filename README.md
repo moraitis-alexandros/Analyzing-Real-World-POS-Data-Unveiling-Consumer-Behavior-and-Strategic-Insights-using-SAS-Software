@@ -187,5 +187,125 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 **Diversify Product Appeal:** Explore opportunities to improve the appeal of products from regions like Turkey by understanding consumer preferences, pricing strategies, and potentially leveraging successful models from high-performing regions like India and the US.
 
 
+## RFM Analysis Insight:
+
+## Objective: 
+
+
+At this stage, we proceeded with segmenting the customer base to enable profiling of the business's customers. This allows us to offer personalized services and products. Customer segmentation was conducted using RFM analysis based on three parameters:
+• Recency - How recently did the customer make a purchase?
+• Frequency - How often does the customer make purchases?
+• Monetary - What is the total value of the customer's purchases?
+
+## Tools Used
+
+SAS EG to create RFM Table
+
+SAS Visual Studio (in SAS Viya) to run Clustering pipeline
+
+## Enhancing Data Integrity and Normalization for Effective Clustering
+
+An analysis conducted using SAS EG and focuses on Distribution Analysis for RFM variables. It starts by examining the distribution of data to identify potential outliers. However, the hypothesis testing reveals that none of the variables follow a normal distribution, indicated by p-values <0.01 in the Kolmogorov-Smirnov test.
+
+![Histogram](images/histogram.png)
+
+Observations from histograms and normal probability plots illustrate skewed distributions, especially for Recency and Monetary attributes with skewness >1. To address this, the analysis plans to remove outliers using boxplots and subsequently assess whether skewness changes. If not, a log transformation is proposed to reduce skewness and make the data closer to a normal distribution, aiming to mitigate the impact of large values on clustering.
+
+```sql
+/*calculate skewness and kurtosis for each numeric variable*/
+proc means data=MILESTON.QUERY_CREATE_RFM_TABLE SKEWNESS KURTOSIS;
+run;
+```
+
+![Boxplot](images/boxplot.png)
+
+The upper limits determined from SAS Viya RFM Boxplots guide the data filtering process, identifying specific maximum values for Recency, Frequency, and Monetary attributes. Post-filtering in SAS EG, the data set reduces to 7093 entries from an initial 7444, with subsequent Distribution Analysis indicating improvements in Recency and Frequency, notably reducing the skewness in Monetary.
+
+Comparing skewness between filtered and unfiltered datasets highlights the effectiveness of filtering and presents a case for log transformation. The skewness decreases significantly post-filtering, emphasizing the necessity of incorporating a log transformation into the clustering pipeline for improved results.
+
+## Creating a pipeline is SAS Visual Studio for Effective Clustering
+
+The text discusses data filtering using metadata limits for "Frequency" and "Monetary" properties, alongside extreme percentiles for "Recency." The Recency property does not follow a normal distribution, as a result we cannot use standard deviations from the mean to handle outliers.
+
+Additionally, a Log Transformation Method is applied in the pipeline due to the data's persistent skewness even after outlier limitation. Skewed data can negatively impact algorithms like k-means. Hence, a log transformation is performed, significantly reducing skewness.
+
+For the Clustering Node Settings, the aim is to determine optimal features. The analysis requires at least four clusters based on RFM theory. The Aligned Box Criterion is used to select the number of clusters with the highest GAP statistic. Various normalization methods like z-score, range, and alignment methods such as Principal Component Analysis (PCA) were experimented with. PCA, despite reducing dimensionality, surprisingly improved the GAP statistic even in a few dimensions (three in this case) compared to no PCA.
+
+## Optimizing Clustering Parameters for RFM Analysis
+
+## Clustering Parameter Selection for RFM Analysis
+
+| Choice | Standardization Method | Similarity Distance | PCA Enabled | GAP Results | Clusters |
+|--------|------------------------|---------------------|-------------|-------------|----------|
+| 1      | Z Score                | Euclidean           | Yes         | 0.63        | 4        |
+| 2      | Z Score                | Euclidean           | No          | 0.33        | 3        |
+| 3      | Z Score                | Manhattan           | Yes         | 0.87        | 2        |
+| 4      | Z Score                | Manhattan           | No          | 0.63        | 2        |
+| 5      | Range                  | Euclidean           | Yes         | 0.85        | 2        |
+| 6      | Range                  | Euclidean           | No          | 0.39        | 5        |
+| 7      | Range                  | Manhattan           | Yes         | 0.67        | 3        |
+| 8      | Range                  | Manhattan           | No          | 0.48        | 3        |
+
+### Summary
+The optimal choice, meeting the criterion of at least four clusters for RFM analysis and displaying a higher GAP statistic, is Choice 1. This selection not only fulfills the minimum cluster criterion but also yields a higher GAP value compared to Choice 6 (GAP: 0.39).
+
+### Chosen Parameters for Clustering
+- **Standardization Method:** Z Score
+- **Similarity Distance:** Euclidean
+- **Alignment Method:** PCA
+
+The resulting clustering will generate 4 clusters, observed with a GAP Statistic of 0.63. Subsequently, the Segment Profile node will assign each record its respective cluster, completing the pipeline with the Save Data node.
+
+### Imputation Note
+No imputation is required as there are no missing values in the dataset from the beginning.
+
+
+## Customer Segmentation Analysis and Insights
+
+| Cluster ID | Segment Description | Number of Customers | Percent % of Customers | Average Recency (weeks) | Average Frequency (purchase times) | Average Monetary (in $$$) |
+|------------|---------------------|---------------------|-------------------------|--------------------------|------------------------------------|--------------------------|
+| 1          | Worst - Hibernating | 1,394               | 20%                     | 25.37                    | 1                                  | 1,423.96                 |
+| 2          | Churners            | 1,976               | 28%                     | 20.31                    | 2.60                               | 2,401.49                 |
+| 3          | Best                | 2,477               | 35%                     | 3.97                     | 3.11                               | 2,631.84                 |
+| 4          | First Timer         | 1,212               | 17%                     | 18.94                    | 1.39                               | 143.13                   |
+| Totals     |                     | 7,059               | 100%                    | 15.34                    | 2.26                               | 1,901                    |
+
+### Summary
+This table presents the segmentation of customers across different clusters based on their behavior and purchasing patterns.
+
+### Customer Cluster Insights
+
+- **Worst - Hibernating:** 20% of customers in this cluster have an average recency of 25.37 weeks, making relatively infrequent purchases with lower monetary value.
+  
+- **Churners:** Representing 28% of customers, this segment shows a higher average frequency (2.60 purchase times) and monetary value (2,401.49 in $$$), but with a recency of 20.31 weeks.
+  
+- **Best:** Comprising 35% of customers, this cluster demonstrates the best behavior with a significantly lower recency (3.97 weeks) and higher frequency (3.11 purchase times), along with substantial monetary value (2,631.84 in $$$).
+  
+- **First Timer:** With 17% representation, customers in this cluster exhibit a higher recency (18.94 weeks) but lower frequency (1.39 purchase times) and monetary value (143.13 in $$$).
+
+### Overall Insights
+
+The total customer count is 7,059, with an average recency of 15.34 weeks, an average frequency of 2.26 purchase times, and an average monetary value of 1,901 in $$$.
+
+## Customer Segmentation Analysis: Unveiling Behaviors and Strategies
+
+This analysis delves into four distinct customer segments derived from purchase behavior, recency, frequency, and monetary value (RFM).
+
+![Clusters](images/clusters.png)
+
+- **Best**: Represents top-tier customers who shop frequently, make recent purchases, and have a high monetary value, constituting the largest portion of customers (48.6%).
+- 
+- **First Timer**: Recent purchasers within a quarter but infrequent shoppers with a relatively low monetary value, forming the smallest customer percentage (17.6%).
+- 
+- **Churner**: Customers who previously made frequent purchases but haven't done so in about five months. Despite the hiatus, they had a high monetary value, accounting for 28% of customers.
+- 
+- **Hibernating**: Customers who haven't made purchases for 6-7 months, shop infrequently, yet possess a moderate monetary value close to the average ($1,423). They represent 19.7% of customers.
+
+**Focus on Best & Churners Customers**: Incentivizing established customers with high frequency and value could lead to increased spending. They are more likely to respond positively to promotional campaigns aimed at enhancing their value. Also target Churners for Reactivation beecaus by re-engaging previous high-value customers who have been inactive could significantly boost revenues.
+
+
+
+
+### Operational Suggestions:
 
 
