@@ -327,21 +327,17 @@ The results from the above three metrics are shown in the vizualization below
 
 ## 6 Proposed Strategies for Improvement
 
-- **Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
+- **📍Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
   
-- **Clear Return Policy:** Establishment of transparent return policies to ensure customer satisfaction.
+- **📍Clear Return Policy:** Establishment of transparent return policies to ensure customer satisfaction.
   
-- **Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
+- **📍Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
   
-- **Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
+- **📍Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
 
-
-
-
+- **📍Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
   
-- **Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
-  
-- **Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
+- **📍Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
 
 
 # Market Basket Analysis
