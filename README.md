@@ -103,41 +103,53 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 ![Returns](images/returns.png)
 
-📍Total sales amount to $17,458 with returns standing at $3,234. Returns represent approximately 15.63% of overall transactions compared to 84.37% in sales.
+📍 Total sales amount to $17,458 with returns standing at $3,234. Returns represent approximately 15.63% of overall transactions compared to 84.37% in sales.
 
-📍The monetary value of sales reaches $16,752,418.20, while returns sum up to $3,178,087.90, constituting about 15.95% of total transactions.
+📍 The monetary value of sales reaches $16,752,418.20, while returns sum up to $3,178,087.90, constituting about 15.95% of total transactions.
 
-📍Both return rates, in terms of quantity and monetary value, are concerning, urging further investigation into the reasons behind this trend.
+📍 Both return rates, in terms of quantity and monetary value, are concerning, urging further investigation into the reasons behind this trend.
 
-📍Average basket sizes for both sales and returns are close, indicating larger basket values for returns, potentially linked to delayed deliveries and high-value product returns. Investigating delivery delays' impact on high-value returns is crucial.
+📍 Average basket sizes for both sales and returns are close, indicating larger basket values for returns, potentially linked to delayed deliveries and high-value product returns. Investigating delivery delays' impact on high-value returns is crucial.
 
-📍Efforts should aim to increase sales basket metrics while simultaneously reducing return-related figures.
+📍 Efforts should aim to increase sales basket metrics while simultaneously reducing return-related figures.
 
 #### The Top Products & Categories Shares
 
 
 ![Density](images/shares.png)
 
-📍The analysis aims to identify top-selling products in various categories and their market shares.
+📍 The analysis aims to identify top-selling products in various categories and their market shares.
 
-📍Significant products, such as Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, each occupy around a quarter (25% - 26%) of sales in their respective categories.
+📍 Significant products, such as Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, each occupy around a quarter (25% - 26%) of sales in their respective categories.
 
-📍The Husky Rope 60 and Blue Steel Max Putter stand out, dominating their category with a substantial 34% market share.
+📍 The Husky Rope 60 and Blue Steel Max Putter stand out, dominating their category with a substantial 34% market share.
 
-📍Notably, in categories like watches and eyewear, while top products hold smaller shares (8% and 6% respectively), these categories collectively contribute significantly to total sales (9% and 11% respectively).
+📍 Notably, in categories like watches and eyewear, while top products hold smaller shares (8% and 6% respectively), these categories collectively contribute significantly to total sales (9% and 11% respectively).
 
-📍This analysis provides insights into both specific product performance and broader category trends within the market.
+📍 This analysis provides insights into both specific product performance and broader category trends within the market.
 
 
-### Revenue Insights by Product Origin & Supplier:
+### Supplier Analysis:
 
 ![Suppliers](images/supplier.png)
 
-Turkish Product Revenue: Lower total revenues indicate potential consumer disinterest or lower pricing. Unlike Chinese products, Turkish items lack consumer preference despite similar pricing.
+📍 Dragon SA leads in sales with 47,853 units, followed by Toktai & Chen at 43,543 units. However Toktai & Chen products are included in more invoices. This fact makes him the supplier with the highest demand.
 
-Indian Product Lead: Despite lower individual values compared to similar US-made items, Indian products attract consumers due to a better quantity-price balance, securing the top position in revenue.
+📍 Carper n Sons, with an average of 13 unique codes, sells fewer products than Fabulo Ltd with 11 codes. This indicates lower consumer preference for Carper n Sons' products, prompting a need for quality checks and potential packaging improvements.
 
-US Product Appeal: Despite higher unit values compared to counterparts, US products rank second in revenue, favored for their quality-price equilibrium.
+📍 Carper n Sons' products show lower demand despite higher value, necessitating further investigations into functionality, packaging, and price-quality relationships.
+
+📍 Implementing electronic reviews to customers who purchased or returned Carper n Sons' products could offer deeper insights, especially if targeted towards better customer segments identified through RFM analysis for improved feedback and understanding of low demand reasons (price, product quality, or packaging).
+
+### Product Origin Analysis:
+
+![Suppliers](images/country.png)
+
+📍 Turkish Product Revenue: Lower total revenues indicate potential consumer disinterest or lower pricing. Unlike Chinese products, Turkish items lack consumer preference despite similar pricing.
+
+📍 Indian Product Lead: Despite lower individual values compared to similar US-made items, Indian products attract consumers due to a better quantity-price balance, securing the top position in revenue.
+
+📍 US Product Appeal: Despite higher unit values compared to counterparts, US products rank second in revenue, favored for their quality-price equilibrium.
 
 
 
