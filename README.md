@@ -31,7 +31,7 @@ Predicted customer category 97 purchases to strategically allocate discount coup
 
 ## Objective: 
 
-The primary aim was to conduct an in-depth exploratory data analysis (EDA) to decipher supplier demand, revenue trends, and factors influencing consumer preferences in product selection.
+The primary aim was to conduct an in-depth exploratory data analysis (EDA) to decipher supplier demand, revenue trends, and factors influencing consumer preferences in product selection. The characteristics of the customer base were identified through exploratory analysis and various visualization methods. The breakdown showed a gender distribution of 70.07% male and 29.93% female. Key age groups were middle-aged individuals (36-50) at 37.09% and the young (26-35) at 30.21%. The primary regions of origin were RJ, MG, PR, RS. It was noted that returns amounted to $3,178,087.90 (15.95%) against sales of $16,752,418.20 (84.05%). The average basket size was determined at $959.58, with an average of 14 products per basket. Significantly popular products included the Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, accounting for a quarter (25%-26%) of sales, as well as the Husky Rope 60 and Blue Steel Max Putter, occupying 34% within their category. Notably, watches and eyewear categories had top products with smaller individual shares (8% and 6%, respectively), yet these categories collectively represented a substantial portion of total sales (9% and 11%, respectively). Supplier analysis revealed Dragon SA (22.40%) and Toktai & Chen (16.54%) as the most in-demand, with products from India and the US leading in revenue.
 
 ## Tools Used
 
@@ -41,52 +41,105 @@ SAS Viya
 
 ## Dataset Overview:
 
-*Invoice:* Contains 24,214 unique transactions (baskets).
+- *Invoice*: 20,692 unique transactions (baskets)
 
-*Basket:* Links 418,771 transactions (baskets) to the respective products.
+- *Basket*: 312,537 entries connecting transactions (baskets) with products
 
-*Customers:* Includes data on 10,000 unique customers.
+- *Customers*: 8,584 unique customers
 
-*Products:* Encompasses details of 144 unique products.
+- *Products*: 144 unique items
 
-## Key Highlights
+Sales and returns are adjusted:
+
+  - *Sales*: $17,458
+    
+  - *Returns*: $3,234
+    
+  - *Total*: 20,692 entries post-cleaning.
+
+## Feature Engineering
+
+*Data Cleaning:* In the process of data cleaning and age filtering, customer ages were calculated and subsequently filtered to ensure logical values. The data cleaning phase involved removing entries with birth years earlier than 1910 (considered overage) or later than 2001 (considered underage), contributing to a refined dataset.
+
+*Generate Age Attribute:* Conversion of the birth date to a date format, the creation of a new variable counting the days passed since that date, and the calculation of age using functions, the birth date column is then removed to derive the rounded age. The code also takes into account leap years
+
+![Age](images/age.png)
 
 *Age Range Transformation:* To enhance the analysis of age, it would be beneficial to categorize ages into specific age brackets (Very Young, Young, Middle Age, Mature, Old, Very Old). With this categorization, 
 a more organized result emerges: Middle age customers represent 37.09%, followed by the Young group at 30.21%, while the Very Young group comprises 18.20%, showing a clearer breakdown of age segments.
 
-*Top Product per Product Type & Market Share:* The analysis focuses on identifying the top-selling product within each category and its market share compared to other products within the same category. The results reveal significant products like Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, each occupying a quarter of sales (25% - 26%) in their respective categories. Moreover, the Husky Rope 60 Blue Steel Max Putter dominates its category with a substantial 34% market share. Notably, within categories like watches and eyewear, while the top products hold a small share (8% and 6% respectively), the categories themselves constitute a significant portion of total sales 
-(9% and 11% respectively), indicating broader diversity in those categories despite individual product dominance. This analysis provides insights into both product-specific and category-wide market dynamics.
+*Top Product per Product Type & Market Share:* Developed a code snippet in SAS EG in order to examine top-selling products in each category, highlighting significant items, each occupying important share of their respective category's sales. Also highlight products that stand out with substantial market shares. Notably, while certain top products within some categories hold smaller shares, but collectively contribute significantly to overall sales, showcasing diversity despite individual product dominance. This analysis sheds light on both specific product performance and broader category trends in the market.
 
-*Maps Creation and integration with other Datasets:* Analyzed loss rates by connecting demographic density, observed significant loss rates in specific areas, and created a Tile Chart to depict these relationships.
-Generated maps in Viya using longitude and latitude data from the Query_for_loss_Perc table, establishing a Geo-Hierarchy based on Country and Region levels for spatial analysis.
+```sql
+ %_eg_conditional_dropds(MILESTON.QUERY_TOP_prod_CATEG_PROD2);
+
+PROC SQL;
+   CREATE TABLE MILESTON.QUERY_TOP_PROD_CATEG AS 
+   SELECT DISTINCT t1.'Product type'n,
+   t1.SUM_of_COUNT_of_InvoiceNo as Category_Sales, 
+PUT((t1.SUM_of_COUNT_of_InvoiceNo/300146),percent10.) as Category_Share,
+t2.Product AS Top_Category_Product, 
+   t1.MAX_of_COUNT_of_InvoiceNo as Product_Sales,
+  PUT((t1.MAX_of_COUNT_of_InvoiceNo/t1.SUM_of_COUNT_of_InvoiceNo),percent10.) as Product_Category_Share 
+      FROM    (SELECT t1.'Product type'n, 
+          /* MAX_of_COUNT_of_InvoiceNo */
+            (MAX(t1.Total_Invoices_include_Product)) AS MAX_of_COUNT_of_InvoiceNo, 
+          /* SUM_of_COUNT_of_InvoiceNo */
+            (SUM(t1.Total_Invoices_include_Product)) AS SUM_of_COUNT_of_InvoiceNo
+      FROM MILESTON.QUERY_FOR_TOP_PRODUCTS_PER_TYPE t1
+      GROUP BY t1.'Product type'n) as t1
+           INNER JOIN MILESTON.QUERY_FOR_TOP_PRODUCTS_PER_TYPE t2 ON (t1.MAX_of_COUNT_of_InvoiceNo = 
+          t2.Total_Invoices_include_Product AND t1.'Product type'n = t2.'Product type'n)
+order by Product_Sales DESC;
+QUIT;
+```
+
+*Maps Creation and integration with other Datasets:* Analyzed loss rates by connecting demographic density, observed significant loss rates in specific areas, and created vizualizations to depict these relationships.
+Generated maps in Viya using longitude and latitude data, establishing a Geo-Hierarchy based on Country and Region levels for spatial analysis.
 
 ## In-depth Insights:
 
-#### Sales Patterns:
+#### Sales & Returns Patterns:
 
-- **Weekday Sales Trends**: Increased sales observed from Tuesday to Friday, indicating higher sales in receipts issued, total products sold, and overall sales value.
+![Returns](images/returns.png)
 
-- **Friday Surges**: Potential consumer purchases aimed at utilizing leisure time over the weekend, attributed to the store selling various hobby-related items.
+📍Total sales amount to $17,458 with returns standing at $3,234. Returns represent approximately 15.63% of overall transactions compared to 84.37% in sales.
 
-- **Lowest Sales Days**: Monday and Saturday, likely due to:
+📍The monetary value of sales reaches $16,752,418.20, while returns sum up to $3,178,087.90, constituting about 15.95% of total transactions.
 
-  - **Monday Effect**: Individuals starting their workweek, less time for online shopping.
- 
-  - **Weekend Activities**: Saturdays associated with outdoor activities and family time, reducing time for online shopping.
+📍Both return rates, in terms of quantity and monetary value, are concerning, urging further investigation into the reasons behind this trend.
 
-#### Consumer Behavior by Weekday:
+📍Average basket sizes for both sales and returns are close, indicating larger basket values for returns, potentially linked to delayed deliveries and high-value product returns. Investigating delivery delays' impact on high-value returns is crucial.
 
-- **Average Basket Size per Weekday**: Notable observation: Friday, Saturday, and Tuesday have the highest average basket sizes. 
+📍Efforts should aim to increase sales basket metrics while simultaneously reducing return-related figures.
 
-- **Saturday's Impact**: Despite lower sales counts, products sold on Saturdays contribute significantly more to the overall revenue due to higher average basket sizes.
+#### The Top Products & Categories Shares
+
+
+![Density](images/shares.png)
+
+📍The analysis aims to identify top-selling products in various categories and their market shares.
+
+📍Significant products, such as Hailstorm Steel Woods Set, Course Pro Umbrella, and Hailstorm Steer Irons, each occupy around a quarter (25% - 26%) of sales in their respective categories.
+
+📍The Husky Rope 60 and Blue Steel Max Putter stand out, dominating their category with a substantial 34% market share.
+
+📍Notably, in categories like watches and eyewear, while top products hold smaller shares (8% and 6% respectively), these categories collectively contribute significantly to total sales (9% and 11% respectively).
+
+📍This analysis provides insights into both specific product performance and broader category trends within the market.
+
 
 ### Revenue Insights by Product Origin & Supplier:
+
+![Suppliers](images/supplier.png)
 
 Turkish Product Revenue: Lower total revenues indicate potential consumer disinterest or lower pricing. Unlike Chinese products, Turkish items lack consumer preference despite similar pricing.
 
 Indian Product Lead: Despite lower individual values compared to similar US-made items, Indian products attract consumers due to a better quantity-price balance, securing the top position in revenue.
 
 US Product Appeal: Despite higher unit values compared to counterparts, US products rank second in revenue, favored for their quality-price equilibrium.
+
+
 
 ### Operational Suggestions:
 
