@@ -1,4 +1,4 @@
-# Decision Tree Analysis Insight
+# Decision Tree Analysis Insights
 
 ## Objective:
 
