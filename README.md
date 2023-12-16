@@ -27,7 +27,7 @@ Predicted customer category 97 purchases to strategically allocate discount coup
 
 
 
-## Exploratory Data Analysis Insights:
+# Exploratory Data Analysis Insights:
 
 ## Objective: 
 
@@ -187,7 +187,7 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 **Diversify Product Appeal:** Explore opportunities to improve the appeal of products from regions like Turkey by understanding consumer preferences, pricing strategies, and potentially leveraging successful models from high-performing regions like India and the US.
 
 
-## RFM Analysis Insight:
+# RFM Analysis Insight:
 
 ## Objective: 
 
@@ -331,9 +331,7 @@ The results from the above three metrics are shown in the vizualization below
 
 - I notice that for churners, there is a return rate of 14.34% (pertaining to the 11 cities mentioned earlier). This particular percentage is quite significant and requires investigation into whether the number of returns is related to customer churn. Therefore, with the same data, we are delving deeper to discover the categories of Returns.
 
-### 6 Operational Suggestions based on the Analysis:
-
-## Proposed Strategies for Improvement
+## 6 Proposed Strategies for Improvement
 
 - **Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
   
@@ -342,9 +340,87 @@ The results from the above three metrics are shown in the vizualization below
 - **Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
   
 - **Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
+
+
+
+
   
 - **Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
   
 - **Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
+
+
+# Market Basket Analysis
+
+This market analysis is based on data processed using SAS Viya for market basket analysis. The analysis combines price range (low, medium, high) and sales volume for each item to derive meaningful insights and opportunities.
+
+| Cluster Category | Opportunity | Action | Justification |
+|------------------|-------------|--------|---------------|
+| All Clusters     | Stock Reduction | Adjust Star Gazer price higher & decrease Firefly; bundle in recommendation system | Boost Firefly sales at a lower price, clear excess stock |
+| All Clusters     | Bundling | Bundle TrailChef Canteen with EverGlow Double; suggest as a combo in recommendation system | Boost sales for both; Canteen benefits from higher demand |
+| Churners         | Campaign & Bundling | Ad campaign for Granite Shovel & BugShield Extreme; present as essential bundle for outdoor trips | Target outdoor enthusiasts, promote bundle for trips |
+| Churners         | Ad Campaign & Offer | Campaign for Husky Harness Extreme & Hibernator Camp Cot; highlight for climbing trips | Target climbers, offer essentials with limited-time deals |
+| Best             | Bundling & Promotion | Bundle EverGlow Butane & Star Dome; target best customers through ads; create low product clearance opportunity | Drive sales by bundling necessary camping items for the best customer segment |
+| Best             | Price Adjustment & Offer | Slightly increase TrailChef Single Flame price & provide discount on Granite Carabiner; target loyalty cardholders | Encourage purchase through loyalty discounts and recommendations |
+
+
+
+# Decision Tree Analysis
+
+## Objective:
+
+Conduct analysis on historical data, to create a model predicting current data using SAS Viya. The prediction concerns whether a customer will be a buyer in category 97 or not. Once this predictive model is built, targeted coupon campaigns can be sent to customers more likely to respond positively to category 97, thereby avoiding ad expenses on those less likely to respond.
+  
+## Process Overview:
+
+### Check the proportion of buyers to non-buyers. Ideally, aiming for over 10%. If not, consider undersampling or oversampling.
+
+Using a pie chart revealed that I have 30.2% buyers (631 buyers) and 69.8% non-buyers (2280 non-buyers) out of a total of 2,093 customers. This indicates that my data doesn't require undersampling or oversampling techniques.
+    
+### Check for null values. 
+
+There are no null values
+    
+### Establish an operational cut-off point based on a profit matrix.
+
+The profit matrix forms the basis for determining the minimum probability (minimum propability) a customer should be classified as a buyer before creating the decision tree (prediction model). This minimum probability, termed the operational cutoff point, is crucial to ensure profitable marketing campaigns.
+
+- **Operational Cutoff Point Calculation:**
+  - Consider P(Buyer) as the probability a customer is a buyer.
+  - Calculate Total Expected Profit = Expected_Profit_PredictionGood – Expected_Profit_PredictionBad.
+  - Define P(Buyer) > = 0.1666 as the cutoff point (minimum probability).
+  
+- **Interpretation of Cutoff Point:**
+  - A value of 0.1666 represents the minimum probability a customer needs to be classified as a potential buyer in category 97, ensuring overall profit rather than loss.
+  
+- **Key Insight:**
+  - The theoretical cutoff point (50%) is less efficient than the calculated 16.66%. Choosing the theoretical 50% loses potential buyers (P(Buyer) range: [0.166, 0.5]), impacting the expected profit positively.
+
+### Construct a Decision Tree and extract conclusions.
+
+### Decision Tree Explanation
+
+![Decision-Tree](images/cutoff.png)
+
+Operational interpretation of the decision tree model results:
+
+| Terminal Leaf | Explanation |
+| --- | --- |
+| Terminal Leaf 1 | If the customer's age is 41 or older and their total monetary value in the business is greater than or equal to $155, there is a 58.33% probability of purchasing category 97. |
+| Terminal Leaf 2 | If the customer's age is 41 or older and their total monetary value in the business is less than $155 (missing information), there is a 95.16% probability that this customer will not purchase category 97. |
+| Terminal Leaf 3 | If the customer's age is younger than 41 (or missing) and their total monetary value in the business is greater than $136.80, there is a 92.77% probability that this customer will purchase category 97. |
+| Terminal Leaf 4 | If the customer's age is younger than 41 (or missing), their total monetary value in the business is less than $136.80 (or missing), and their most recent purchase was at least 7 weeks ago (inclusive), there is a 76.32% probability that this customer will not purchase category 97. |
+| Terminal Leaf 5 | If the customer's age is younger than 41 (or missing), their total monetary value in the business is less than $136.80 (or missing), and their most recent purchase was less than 7 weeks ago (excluding 7), there is a 76.92% probability that this customer will purchase category 97. |
+
+Additional Note: Considering the operational cut-off point (0.166), the model categorizes customers with a probability greater than 16.66% as buyers (or conversely, those with a probability less than 83.34% as non-buyers). Terminal Leafs 1, 3, 4, 5 classify customers as buyers, while Terminal Leaf 2 categorizes them as non-buyers.
+
+The significant variables distinguishing between categories are age, total monetary value, and recency. These factors help comprehend a customer's behavior concerning the purchase of category 97. Age reflects consumer preferences, indicating potential attraction towards category 97 for a younger audience. Total monetary value reflects economic capacity, while recency mirrors customer dedication to the business. Leveraging this information, strategies can be adapted to target customers meeting specific criteria, increasing profits from potential purchases, while mitigating losses from wrongly targeted customers.
+
+
+
+
+
+
+
 
 
