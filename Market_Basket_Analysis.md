@@ -1,4 +1,4 @@
-# Market Basket Analysis
+# Market Basket Analysis Insights
 
 This market analysis is based on data processed using SAS Viya for market basket analysis. The analysis combines price range (low, medium, high) and sales volume for each item to derive meaningful insights and opportunities.
 
