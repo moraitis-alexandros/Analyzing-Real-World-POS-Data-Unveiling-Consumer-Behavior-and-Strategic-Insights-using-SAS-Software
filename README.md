@@ -115,7 +115,6 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 #### The Top Products & Categories Shares
 
-
 ![Density](images/shares.png)
 
 📍 The analysis aims to identify top-selling products in various categories and their market shares.
@@ -128,8 +127,17 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 📍 This analysis provides insights into both specific product performance and broader category trends within the market.
 
+#### Promotion Analysis:
 
-### Supplier Analysis:
+![Promotions](images/promotions.png)
+
+📍 Consumers tend to purchase products even when they aren't on sale, a trend worth consideration since, during the dataset's analysis period (as outlined in the appendix), all products were sold at some point on offer.
+
+📍 Promotional efforts might not be targeting the right audience at the right time. That scenario indicates a problem with promotional campaigns not reaching the intended audience, resulting in wasted advertising expenses.
+
+📍 Further customer analysis (using cluster & association rules) is crucial in both cases to ensure the right products are marketed to the right people at the appropriate times.
+
+#### Supplier Analysis:
 
 ![Suppliers](images/supplier.png)
 
@@ -141,9 +149,21 @@ Generated maps in Viya using longitude and latitude data, establishing a Geo-Hie
 
 📍 Implementing electronic reviews to customers who purchased or returned Carper n Sons' products could offer deeper insights, especially if targeted towards better customer segments identified through RFM analysis for improved feedback and understanding of low demand reasons (price, product quality, or packaging).
 
-### Product Origin Analysis:
+#### Density Analysis:
 
-![Suppliers](images/country.png)
+![Density](images/density.png)
+
+📍 Regions AM and PI are quite sparsely populated, with Loss Rates of 32% and 28%, respectively, indicating that a significant portion of the income from these areas might not be actual income due to product returns.
+
+📍 These areas' location, their sparse population, and potential delays in product delivery due to infrequent transportation could contribute to customer dissatisfaction and product returns.
+
+📍 Additionally, densely populated regions like DF and SP also exhibit a high Loss Rate, possibly due to shipping delays caused by shipment volumes, resulting in returned products and additional expenses for the business if customers haven't received their orders.
+📍 The company should focus on these regions to investigate issues further, such as collecting data on delivery times. Sending electronic surveys or contacting customers could help understand customer satisfaction levels and pinpoint problems related to product satisfaction, delivery times, or non-received items. The overall goal should be to reduce the Loss Rate in these regions.
+
+
+#### Product Origin Analysis:
+
+![Country](images/country.png)
 
 📍 Turkish Product Revenue: Lower total revenues indicate potential consumer disinterest or lower pricing. Unlike Chinese products, Turkish items lack consumer preference despite similar pricing.
 
