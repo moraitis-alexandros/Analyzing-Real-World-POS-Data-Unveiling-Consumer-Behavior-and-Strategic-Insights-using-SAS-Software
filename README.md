@@ -1,6 +1,6 @@
 # Analyzing Real-World POS Data: Unveiling Consumer Behavior & Strategic Insights using SAS Software
 
-The present work entails a comprehensive analysis of real sales data from XYZ Company, specializing in retail products related to hobbies like camping, golf, and more. This analysis employs exploratory methods alongside machine learning techniques, including RFM analysis (clustering), market basket analysis, and prediction using decision trees. Leveraging the capabilities of SAS Viya & SAS EG tools, this study extracts valuable insights from the data, uncovering patterns and trends critical for informed strategic decision-making.
+The present work entails a comprehensive analysis of real sales data from XYZ Company located in Brazil, specializing in retail products related to hobbies like camping, golf, and more. This analysis employs exploratory methods alongside machine learning techniques, including RFM analysis (clustering), market basket analysis, and prediction using decision trees. Leveraging the capabilities of SAS Viya & SAS EG tools, this study extracts valuable insights from the data, uncovering patterns and trends critical for informed strategic decision-making.
 
 
 [**Exploratory Analysis**](https://github.com/moraitis-alexandros/Analyzing-Real-World-POS-Data-Unveiling-Consumer-Behavior-and-Strategic-Insights-using-SAS-Software/blob/main/Exploratory-Analysis)
@@ -303,9 +303,48 @@ This analysis delves into four distinct customer segments derived from purchase 
 
 **Focus on Best & Churners Customers**: Incentivizing established customers with high frequency and value could lead to increased spending. They are more likely to respond positively to promotional campaigns aimed at enhancing their value. Also target Churners for Reactivation beecaus by re-engaging previous high-value customers who have been inactive could significantly boost revenues.
 
+## Analyzing Regional Impact: Weighted Churn & Best Rate Metrics 
 
+**Regions that most churners located (Weighted Churn Rate)**
 
+It would be useful to analyze the areas where churn occurs the most. Once we identify the top regions, we can conduct a more targeted investigation into what causes the churn (e.g., competition, delivery times, etc.).
+For this reason, it's not enough to simply measure the churners within an area, but rather the ratio of churners to the total customers in each area. The churn rate is calculated using the formula
 
-### Operational Suggestions:
+```
+ (churners_total/customer_total)*100
+```
+However, this specific formula shows a weakness as it doesn't consider the overall value that each city contributes to the company's turnover. More specifically, for economic reasons, the research will be carried out in specific cities (surveys, etc.) that present a high churn rate. However, it must be ensured that these cities have the ability to provide value to the company. Thus, a high churn rate alone is not sufficient (e.g., in Amapi, where it might be 40%, but the total customers are only 5). Therefore, we need to create a new measure called the weighted churn rate. As a result, I have identified the cities with the highest churn rates, taking into account the impact they have on the value. Therefore, I can focus on these cities to take action. 
+
+**Regions that Best Customers are Located**
+It would also be useful to analyze the areas where the best customers are located. Once we identify the top areas, we can conduct more targeted marketing. We follow a similar process and logic as before, but now focusing exclusively on the best customers and creating the metric Weighted Best Rate.
+
+**Churners and Returns Correlation**
+There is a significant issue with product returns, as they occupy a large percentage of total sales. Therefore, it would be useful to investigate whether customer churn is related to product returns. That is, what percentage of returns - Return_Rate - (i.e., how many invoices are marked as Return out of the total Sales) each cluster has?
+
+The results from the above three metrics are shown in the vizualization below
+
+![Regions](images/region.png)
+
+- Given that the best customers are those with a higher likelihood of responsiveness, I will include areas with a Weighted Best Rate above 0.8% (as there is a significant difference beyond 0.8% compared to 0.5%). Here, the potential of the weighted average is evident as the RS area has a low best rate of 29% but ranks high in the weighted average. This happens because even though it has fewer best customers, they spend more than other cities with more best customers. Thus, the ranking with the weighted average, as mentioned, takes into account the monetary impact, which is something we want as we don't just want the best customers but also those who spend more. This ratio is achieved by the weighted average. Notice that the highest weighted best rate (out of one) is found in SP, RJ, MG, PR, RS, SC, BA, PE, DF, GO, CE (11 cities)). Similarly, if we add up the monetary values, we'll see that they have a value of 11,825,019.89$ -> 11,825,019.89$ /13,422,879.36$ = 88.1% of the total value. Therefore, in case of a limited budget, we can focus on these 11 cities instead of the total of 26 cities, which together account for only 12%.
+
+- I also observe that the highest weighted churn rate (out of one) is found in SP, MG, RJ, RS, PR, BA. These cities are larger in Brazil. Similarly, if we add up the monetary values, we'll see that they have a value of 9,954,732.75$ -> 9,954,732.75$ /13,422,879.36$ = 74.2% of the total value. So, in case of a limited budget, we can focus on these 6 instead of the total of 26 cities, which collectively account for only 25%.
+
+- I notice that for churners, there is a return rate of 14.34% (pertaining to the 11 cities mentioned earlier). This particular percentage is quite significant and requires investigation into whether the number of returns is related to customer churn. Therefore, with the same data, we are delving deeper to discover the categories of Returns.
+
+### 6 Operational Suggestions based on the Analysis:
+
+## Proposed Strategies for Improvement
+
+- **Quality Assurance in 6 Regions:** Evaluation of delivery times, focusing on areas with a high weighted rate for product quality, order convenience, and competitive analysis.
+  
+- **Clear Return Policy:** Establishment of transparent return policies to ensure customer satisfaction.
+  
+- **Feedback Collection:** Gathering feedback through reviews and surveys from both best customers and churners.
+  
+- **Last Mile Optimization:** Collaboration with couriers to optimize last-mile delivery through enhanced tracking and reduced delivery times.
+  
+- **Targeted Advertising Campaigns:** Advertising campaigns targeted at regions with a high weighted best rate, utilizing recommendation systems for personalized outreach.
+  
+- **Enhanced E-shop Experience:** Optimizing the virtual store experience by incorporating augmented reality (e.g., sunglasses try-on) and improving product descriptions using multimedia such as photos and videos.
 
 
